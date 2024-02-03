@@ -1,6 +1,8 @@
 requests
+urllib3==1.26.6
 json
 os
 re
 base64
 shutil
+iso639-lang

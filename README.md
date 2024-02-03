@@ -2,7 +2,8 @@
 
 ## Mubi Downloader
 
-"Mubi Downloader" is a Python script that allows users to download movies from the Mubi streaming service. It uses the Mubi API to extract the video URL and decryption key, and then decrypts it using shaka-packager.
+"Mubi Downloader" is a Python script that allows users to download movies from the Mubi streaming service. It uses the Mubi API to extract the video URL and decryption key, and then decrypts it using shaka-packager. <br>
+<b>Updated:</b> The program can now be launched from the command line (once the settings have been adjusted).
 
 ## Table of Contents
 - [Introduction](#Introduction)
@@ -20,31 +21,28 @@ Mubi is a streaming service that offers a carefully curated selection of movies 
     * Manually install each library specified in 'requirements.txt'.
     * Run 'pip install -r requirements.txt'
 3. Install [shaka-packager](https://github.com/shaka-project/shaka-packager/releases/tag/v2.6.1) and [N_m3u8DL-RE](https://github.com/nilaoda/N_m3u8DL-RE/releases)
-4. Once installed, add the folders where the tools are installed to your system's `PATH` environment variable. 
-
-   - On Windows:
-
-     1. Open the Start menu and search for "Environment Variables".
-     2. Click "Edit the system environment variables".
-     3. Click the "Environment Variables" button.
-     4. Under "System variables", scroll down and find "Path", then click "Edit".
-     5. Click "New" and enter the path to the folder where each tool is installed.
-     6. Click "OK" to close all the windows.
+4. Copy the .exe files for shaka-packager and N_m3u8DL-RE into the same folder that contains the mubi_downloader.py file.
 
 ## Usage
 
 1. Open the `mubi_downloader.py` file in a text editor.
-2. Replace all the 'ADDHERE' strings with the relevant data, which can be obtained by watching your network traffic when streaming a movie from MUBI. Most of these elements can be obtained from a single URL. 
+2. Replace all the 'ADDHERE' in the "SETTINGS" at the beginning of the file with the relevant data, which can be obtained by watching your network traffic when streaming a movie from MUBI. Most of these elements can be obtained from a single URL. 
    - For example, to get the movie ID (in the URL) and the Authorization Bearer (in the headers), filter for the word "viewing" in your network traffic manager. 
    - Then, search for "cenc" to get the value for the header "dt-custom-data:". Copy this value and paste it into the corresponding one in the script.
-3. Edit the folder path, and thats it.
+3. Steps 1 & 2 only need to be performed the first time you use the script. For each subsequent movie, only the Movie ID is required.
 4. Open your terminal and navigate to the directory containing the `mubi_downloader.py` file. (or add it to PATH)
 5. Run the following command in your terminal:
 
     ```
-    python mubi_downloader.py
+    python mubi_downloader.py MovieID
     ```
+   
+   or 
 
+    ```
+    python mubi_downloader.py "MovieID1,MovieID2" PATH:\TO\OUTPUT\FOLDER
+    ```
+   
 6. If you entered all the details correctly, your movie will start downloading.
 
 ## Legal Notice
